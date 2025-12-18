@@ -1,84 +1,104 @@
-# Angular 16 Pagination example (server side) with ngx-pagination
+# 🐞 Bug Tracker – Angular + ASP.NET Core
 
-Angular 16 Pagination example with existing API (server-side pagination) using `ngx-pagination`.
+A full-stack **Bug Management application** built with **Angular 16** (frontend) and **ASP.NET Core Web API (Minimal API)** following clean architecture principles.
 
-![angular-16-pagination-example](angular-16-pagination-example.png)
+This project demonstrates **real-world CRUD operations**, pagination, validation handling, and proper UI–API integration.
 
-For instruction, please visit:
-> [Angular 16 Pagination example with ngx-pagination](https://www.bezkoder.com/angular-16-pagination-ngx/)
+---
 
-Servers will exports API for pagination (with/without filter), here are some url samples:
-- `/api/tutorials?page=1&size=5`
-- `/api/tutorials?size=5`: using default value for page
-- `/api/tutorials?page=1`: using default value for size
-- `/api/tutorials?title=data&page=1&size=3`: pagination & filter by title containing ‘data’
+## ✨ Features
 
-Server side Pagination for this app:
-> [Node Express Pagination with MySQL](https://www.bezkoder.com/node-js-sequelize-pagination-mysql/)
+### Frontend (Angular 16)
+- Bug listing with pagination
+- Create, Edit, Delete bugs
+- Reusable Add/Edit form
+- Enum mapping (BugStatus → readable text)
+- Proper API error & validation handling
+- Cancel action for forms
+- Clean routing (`/bugs`, `/bugs/add`, `/bugs/edit/:id`)
+- Bootstrap-based responsive UI
 
-> [Node Express Pagination with PostgreSQL](https://www.bezkoder.com/node-js-pagination-postgresql/)
+### Backend (ASP.NET Core)
+- Minimal APIs
+- FluentValidation for request validation
+- Paginated API responses
+- Clean DTO separation
+- Consistent API response structure
 
-> [Node Express Pagination with MongoDB](https://www.bezkoder.com/node-js-mongodb-pagination/)
+---
 
-> [Spring Boot Pagination and Filter example](https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/)
+## 🧱 Tech Stack
 
-> [Spring Boot MongoDB Pagination example with Spring Data](https://www.bezkoder.com/spring-boot-mongodb-pagination/)
+### Frontend
+- Angular 16
+- TypeScript
+- Bootstrap 5
+- ngx-pagination
+- Angular Router
+- HttpClient
 
-## Run
-Run `ng serve --port 8081` for a dev server. Navigate to `http://localhost:8081/`. The app will automatically reload if you change any of the source files.
+### Backend
+- ASP.NET Core Web API
+- Minimal APIs
+- FluentValidation
+- Entity Framework Core
+- SQL Database
 
-## More Practice:
-> [Angular 16 example: CRUD Application with Rest API](https://www.bezkoder.com/angular-16-crud-example/)
+---
 
-> [Angular 16 JWT Authentication & Authorization with Web API](https://www.bezkoder.com/angular-16-jwt-auth/)
+## 📂 Project Structure (Angular)
 
-> [Angular 16 File upload example with Progress bar](https://www.bezkoder.com/angular-16-file-upload/)
+src/app
+│
+├── components
+│ ├── bugs-list
+│ └── add-bug
+│
+├── models
+│ ├── bug.model.ts
+│ ├── bug-status.enum.ts
+│ └── api-response.model.ts
+│
+├── requests
+│ ├── create-bug.request.ts
+│ ├── update-bug.request.ts
+│ └── pagination.request.ts
+│
+├── services
+│ └── bug.service.ts
+│
+└── app-routing.module.ts
 
-> [Angular 16 Multiple Files upload example with Progress Bar](https://www.bezkoder.com/angular-16-multiple-file-upload/)
 
-> [Angular 16 Form Validation example (Reactive Forms)](https://www.bezkoder.com/angular-16-form-validation/)
+---
 
-Fullstack with Node:
-> [Angular 16 + Node Express + MySQL example](https://www.bezkoder.com/angular-16-node-js-express-mysql/)
+## 🔌 API Endpoints
 
-> [Angular 16 + Node Express + PostgreSQL example](https://www.bezkoder.com/angular-16-node-js-express-postgresql/)
+Base URL: http://localhost:5091/api/bugs
 
-> [Angular 16 + Node Express + MongoDB example](https://www.bezkoder.com/angular-16-node-js-express-mongodb/)
 
-> [Angular 16 + Node Express: File upload example](https://www.bezkoder.com/angular-16-node-express-file-upload/)
+| Method | Endpoint | Description |
+|------|--------|------------|
+| POST | `/` | Create bug |
+| PUT | `/{id}` | Update bug |
+| DELETE | `/{id}` | Delete bug |
+| GET | `/{id}` | Get bug by id |
+| POST | `/pagination` | Get paginated bug list |
 
-> [Angular 16 + Node.js Express: JWT Authentication and Authorization example](https://www.bezkoder.com/node-js-angular-16-jwt-auth/)
+---
 
-Fullstack with Spring Boot:
-> [Angular 16 + Spring Boot example](https://www.bezkoder.com/spring-boot-angular-16-crud/)
+## 📦 API Response Format
 
-> [Angular 16 + Spring Boot + MySQL example](https://www.bezkoder.com/spring-boot-angular-16-mysql/)
+### Success Response
+```json
+{
+  "success": true,
+  "message": null,
+  "data": {
+    "items": [],
+    "totalCount": 18,
+    "pageNumber": 1,
+    "totalPages": 6
+  }
+}
 
-> [Angular 16 + Spring Boot + PostgreSQL example](https://www.bezkoder.com/spring-boot-angular-16-postgresql/)
-
-> [Angular 16 + Spring Boot + MongoDB example](https://www.bezkoder.com/spring-boot-angular-16-mongodb/)
-
-> [Angular 16 + Spring Boot: File upload example](https://www.bezkoder.com/angular-16-spring-boot-file-upload/)
-
-> [Angular 16 + Spring Boot: JWT Authentication and Authorization example](https://www.bezkoder.com/angular-16-spring-boot-jwt-auth/)
-
-Fullstack with Django:
-> [Angular + Django example](https://www.bezkoder.com/django-angular-13-crud-rest-framework/)
-
-> [Angular + Django + MySQL](https://www.bezkoder.com/django-angular-mysql/)
-
-> [Angular + Django + PostgreSQL](https://www.bezkoder.com/django-angular-postgresql/)
-
-> [Angular + Django + MongoDB](https://www.bezkoder.com/django-angular-mongodb/)
-
-Serverless with Firebase:
-> [Angular 16 Firebase CRUD with Realtime DataBase](https://www.bezkoder.com/angular-16-firebase-crud/)
-
-> [Angular 16 Firestore CRUD example](https://www.bezkoder.com/angular-16-firestore-crud/)
-
-> [Angular 16 Firebase Storage: File Upload/Display/Delete example](https://www.bezkoder.com/angular-16-firebase-storage/)
-
-Integration (run back-end & front-end on same server/port)
-> [How to integrate Angular with Node Restful Services](https://bezkoder.com/integrate-angular-12-node-js/)
-
-> [How to Integrate Angular with Spring Boot Rest API](https://bezkoder.com/integrate-angular-12-spring-boot/)
