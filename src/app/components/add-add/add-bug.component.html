@@ -1,0 +1,88 @@
+<div class="submit-form">
+  <div *ngIf="!submitted">
+
+    <div class="form-group mb-3">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        required
+        [(ngModel)]="bug.title"
+        name="title"
+      />
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        [(ngModel)]="bug.description"
+        name="description">
+      </textarea>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Status</label>
+      <select
+        class="form-control"
+        [(ngModel)]="bug.status"
+        name="status">
+        <option [ngValue]="BugStatus.Open">Open</option>
+        <option [ngValue]="BugStatus.InProgress">In Progress</option>
+        <option [ngValue]="BugStatus.Resolved">Resolved</option>
+        <option [ngValue]="BugStatus.Closed">Closed</option>
+      </select>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Priority</label>
+      <select
+        class="form-control"
+        [(ngModel)]="bug.priority"
+        name="priority">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+    </div>
+    <!-- Validation Errors -->
+    <div *ngIf="validationErrors.length" class="alert alert-danger mt-3">
+      <ul class="mb-0">
+        <li *ngFor="let err of validationErrors">
+          {{ err }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- General Error -->
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex gap-3 mt-4">
+
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="saveBug()">
+        {{ isEdit ? 'Update' : 'Submit' }}
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary ml-3"
+        (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <!-- Success State (optional, can be removed since we redirect) -->
+  <div *ngIf="submitted">
+    <h4>Bug created successfully!</h4>
+    <button class="btn btn-primary" (click)="newBug()">Add Another</button>
+  </div>
+</div>
